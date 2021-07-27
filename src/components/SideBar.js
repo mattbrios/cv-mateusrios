@@ -1,8 +1,9 @@
-import { Typography } from '@material-ui/core';
+import { Hidden, Typography } from '@material-ui/core';
 import React from 'react';
 import styled from 'styled-components';
-import ProfilePhoto from '../images/mateusrios.jpeg';
+import ProfilePhoto from '../images/mateusrios.jpg';
 import ContactItem from './ContactItem';
+import Skill from './Skill';
 
 const Content = styled.div`
   background-color: var(--dark-blue);
@@ -16,10 +17,10 @@ const Content = styled.div`
     
     img {
       width: 80%;
+      max-width: 200px;
       border-radius: 999px;
       border: 0.5rem solid var(--white);
       box-shadow: 0 8px 16px 8px rgba( 0, 0, 0, 0.25 );
-      margin-bottom: 2rem;
     }
   }
 `;
@@ -34,7 +35,7 @@ const contacts = [
   {
     icon: "wpp.png",
     name: "WhatsApp",
-    content: "+55 15 99623-6179",
+    content: "Me chama no Whats",
     url: `https://wa.me/5515996236179/?text=${encodeURI("Oi!!! Eu achei seu contato pelo seu CV. Podemos conversar?")}`,
   },
   {
@@ -75,13 +76,99 @@ const contacts = [
   },
 ];
 
+const hardSkills = [
+  {
+    name: "HTML5, CSS3",
+    ranking: 4
+  },
+  {
+    name: "JavaScript",
+    ranking: 4
+  },
+  {
+    name: "ReactJS",
+    ranking: 3
+  },
+  {
+    name: "JQuery",
+    ranking: 3
+  },
+  {
+    name: "Bootstrap",
+    ranking: 4
+  },
+  {
+    name: "Material UI",
+    ranking: 4
+  },
+  {
+    name: "Git, Gitflow",
+    ranking: 4
+  },
+  {
+    name: "UI/UI Design",
+    ranking: 4
+  },
+  {
+    name: "Figma",
+    ranking: 4
+  },
+  {
+    name: "Adobe Photoshop",
+    ranking: 4
+  },
+  {
+    name: "Adobe Illustrator",
+    ranking: 3
+  },
+  {
+    name: "Adobe Premiere Pro",
+    ranking: 2
+  },
+  {
+    name: "Docker",
+    ranking: 1
+  },
+];
+
+const softSkills = [
+  {
+    name: "Gerenciamento",
+    ranking: 4
+  },
+  {
+    name: "Comunicação",
+    ranking: 5
+  },
+  {
+    name: "Equipe 100% remota",
+    ranking: 5
+  },
+  {
+    name: "Inglês",
+    ranking: 3
+  },
+  {
+    name: "Auto-reciclagem",
+    ranking: 5
+  },
+]
+
 const SideBar = () => {
   return (
     <Content>
       <div className="imgContainer">
         <img src={ProfilePhoto} alt="Foto Mateus Rios" />
       </div>
-      <Typography component="h4" variant="body2" className="white-text bold-text upper" gutterBottom>
+      <Hidden smUp>
+        <Typography variant="h4" component="h1" className="light-text spacing-before" >
+          Mateus Branco Rios
+        </Typography>
+        <Typography variant="body1" className="bold-text blue-text upper" gutterBottom>
+          Front-end dev &nbsp; | &nbsp; UX/UI Designer
+        </Typography>
+      </Hidden>
+      <Typography component="h4" variant="body2" className="white-text bold-text upper spacing-before" gutterBottom>
         Contatos
       </Typography>
       <>
@@ -89,12 +176,18 @@ const SideBar = () => {
           <ContactItem item={item} key={`contact${index}`} />
         ))}
       </>
-      <Typography component="h4" variant="body2" className="white-text bold-text upper" gutterBottom>
+      <Typography component="h4" variant="body2" className="white-text bold-text upper spacing-before" gutterBottom>
         Hard Skills
       </Typography>
-      <Typography component="h4" variant="body2" className="white-text bold-text upper" gutterBottom>
+      { hardSkills.map( ( hard, index ) => (
+          <Skill data={hard} key={`HardSkill${index}`} />
+      ))}
+      <Typography component="h4" variant="body2" className="white-text bold-text upper spacing-before" gutterBottom>
         Soft Skills
       </Typography>
+      { softSkills.map( ( soft, index ) => (
+          <Skill data={soft} key={`SoftSkill${index}`} />
+      ))}
     </Content>
   )
 }

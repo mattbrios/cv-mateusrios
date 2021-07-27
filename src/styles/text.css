@@ -23,3 +23,6 @@
 .min-line {
   line-height: 1 !important;
 }
+.spacing-before {
+  margin-top: 2rem !important;
+}

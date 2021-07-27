@@ -5,6 +5,7 @@ import styled from 'styled-components';
 const MainContainer = styled.div`
   padding: 2rem 1.5rem;
   background-color: var(--background);
+  min-height: 100%;
 
   hr {
     border: none;
