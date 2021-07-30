@@ -106,7 +106,7 @@ const hardSkills = [
     ranking: 4
   },
   {
-    name: "UI/UI Design",
+    name: "UX/UI Design",
     ranking: 4
   },
   {
